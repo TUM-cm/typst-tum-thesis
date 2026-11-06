@@ -1,0 +1,25 @@
+name: Build thesis
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: typst-community/setup-typst@v5
+        with:
+          typst-version: 0.15.1
+      # PDF/UA-1 fails on missing alt text, so CI catches inaccessible figures early.
+      - run: typst compile --font-path fonts --pdf-standard ua-1 --input final=true thesis.typ thesis.pdf
+      - uses: actions/upload-artifact@v7
+        with:
+          name: thesis
+          path: thesis.pdf
