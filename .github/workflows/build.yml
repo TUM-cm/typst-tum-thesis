@@ -23,3 +23,28 @@ jobs:
         with:
           name: thesis
           path: thesis.pdf
+      # Repositories created from this template inherit this workflow. The
+      # repository check keeps unfinished theses from being published there.
+      # The preview keeps the TODO boxes, otherwise the sample is mostly headings.
+      - if: github.event_name == 'push' && github.repository == 'TUM-cm/typst-tum-thesis'
+        run: |
+          mkdir site
+          typst compile --font-path fonts --pdf-standard ua-1 thesis.typ site/thesis.pdf
+      - if: github.event_name == 'push' && github.repository == 'TUM-cm/typst-tum-thesis'
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: site
+
+  deploy:
+    if: github.event_name == 'push' && github.repository == 'TUM-cm/typst-tum-thesis'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}thesis.pdf
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

@@ -2,6 +2,8 @@
 
 A Typst template for Bachelor's and Master's theses at the Technical University of Munich. The defaults are TUM-wide, and a chair can adapt them in a few lines. It is only a template: agree on the structure of your thesis with your supervisors.
 
+[View the example PDF](https://tum-cm.github.io/typst-tum-thesis/thesis.pdf) to see what the template looks like. This link always shows the template's sample, not your own thesis, so remove it from your copy.
+
 Requires Typst 0.15 or newer.
 
 ## Quick start
