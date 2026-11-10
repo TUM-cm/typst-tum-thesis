@@ -23,7 +23,7 @@
   logo: image("../figures/tum_logo.png", width: 26%, alt: "Logo of the Technical University of Munich"),
   city: auto,
   citation-style: "alphanumeric",
-  print: false,
+  two-sided: sys.inputs.at("two-sided", default: none) == "true",
   declaration: auto,
   body,
 ) = {
@@ -74,7 +74,7 @@
   // free of page numbers.
   let next-page(weak: false) = {
     set page(numbering: none)
-    pagebreak(weak: weak, to: if print { "odd" })
+    pagebreak(weak: weak, to: if two-sided { "odd" })
   }
   let chapter-break(it) = {
     next-page(weak: true)
@@ -142,8 +142,8 @@
   }
   next-page()
 
-  // After the break: otherwise the parity page of a print build is counted and
-  // chapter 1 ends up with number 2.
+  // After the break: otherwise the parity page of a two-sided build is counted
+  // and chapter 1 ends up with number 2.
   set page(numbering: "1")
   counter(page).update(1)
   set par(justify: true, first-line-indent: 2em)
