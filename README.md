@@ -21,7 +21,7 @@ The title pages use New Computer Modern Sans. Typst doesn't include this font, s
 
 ## Adapting it for your chair
 
-`university`, `logo`, `city`, `citation-style`, `two-sided` and `declaration` are optional and have defaults. `school` and `department` are required, so students have to fill them in unless you set them for everyone. To do that, edit `lib/thesis.typ` or wrap `thesis` in your own function.
+`university`, `logo`, `city`, `citation-style`, `two-sided`, `show-todos` and `declaration` are optional and have defaults. `school` and `department` are required, so students have to fill them in unless you set them for everyone. To do that, edit `lib/thesis.typ` or wrap `thesis` in your own function.
 
 The code is in `lib/`:
 
@@ -51,11 +51,7 @@ Set `lang: "de"` for a German thesis. This also switches the declaration and lab
 
 ## TODO hints
 
-`#todo[...]` boxes are shown by default. To hide them:
-
-```sh
-typst compile --font-path fonts --input final=true thesis.typ
-```
+`#todo[...]` boxes show until you remove them or set `show-todos: false`.
 
 ## PDF/UA export
 

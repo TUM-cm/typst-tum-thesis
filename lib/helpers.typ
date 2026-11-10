@@ -5,6 +5,5 @@
 // again in the list, so the state decides which of the two texts appears.
 #let flex-caption(long, short) = context if in-outline.get() { short } else { long }
 
-#let todo(body) = if sys.inputs.at("final", default: none) != "true" {
-  block(width: 100%, radius: 3pt, stroke: 0.5pt, fill: yellow, inset: 10pt, body)
-}
+// The label lets `thesis` hide all boxes with `show-todos: false`.
+#let todo(body) = [#block(width: 100%, radius: 3pt, stroke: 0.5pt, fill: yellow, inset: 10pt, body)<todo>]

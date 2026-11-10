@@ -24,6 +24,7 @@
   city: auto,
   citation-style: "alphanumeric",
   two-sided: sys.inputs.at("two-sided", default: none) == "true",
+  show-todos: true,
   declaration: auto,
   body,
 ) = {
@@ -69,6 +70,7 @@
   show figure: set text(size: 0.85em)
   show figure.caption: set text(size: 9.2pt)
   show figure.caption: set par(leading: 0.5em)
+  show <todo>: it => if show-todos { it }
 
   // Blank parity pages take the page style of their break, so this keeps them
   // free of page numbers.
