@@ -14,22 +14,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: typst-community/setup-typst@v5
-        with:
-          typst-version: 0.15.1
-      # PDF/UA-1 fails on missing alt text, so CI catches inaccessible figures early.
-      - run: typst compile --font-path fonts --pdf-standard ua-1 thesis.typ thesis.pdf
+      - run: make
       - uses: actions/upload-artifact@v7
         with:
           name: thesis
           path: thesis.pdf
       # Repositories created from this template inherit this workflow. The
       # repository check keeps unfinished theses from being published there.
-      # The preview keeps the TODO boxes, otherwise the sample is mostly headings.
       - if: github.event_name == 'push' && github.repository == 'TUM-cm/typst-tum-thesis'
-        run: |
-          mkdir site
-          typst compile --font-path fonts --pdf-standard ua-1 thesis.typ site/thesis.pdf
+        run: mkdir site && cp thesis.pdf site/
       - if: github.event_name == 'push' && github.repository == 'TUM-cm/typst-tum-thesis'
         uses: actions/upload-pages-artifact@v5
         with:
