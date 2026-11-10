@@ -21,7 +21,7 @@ The title pages use New Computer Modern Sans. Typst doesn't include this font, s
 
 ## Adapting it for your chair
 
-`university`, `logo`, `city`, `citation-style`, `print` and `declaration` are optional and have defaults. `school` and `department` are required, so students have to fill them in unless you set them for everyone. To do that, edit `lib/thesis.typ` or wrap `thesis` in your own function.
+`university`, `logo`, `city`, `citation-style`, `two-sided` and `declaration` are optional and have defaults. `school` and `department` are required, so students have to fill them in unless you set them for everyone. To do that, edit `lib/thesis.typ` or wrap `thesis` in your own function.
 
 The code is in `lib/`:
 
@@ -45,9 +45,9 @@ Cite with `@key`, or `@key1 @key2` for several sources. The style is set with `c
 
 Set `lang: "de"` for a German thesis. This also switches the declaration and labels like "Contents" to German. `title-secondary` is the title in the other language.
 
-## Print mode
+## Two-sided printing
 
-`print: true` starts front matter and chapters on odd pages for double-sided printing.
+`two-sided: true` starts front matter and chapters on odd pages for double-sided printing. To get it for a single build, pass `--input two-sided=true` instead.
 
 ## TODO hints
 
