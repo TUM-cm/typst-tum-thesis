@@ -27,6 +27,8 @@ The build fails on any warning or on images and equations without alt text (see 
 
 To skip the downloads, install both system-wide. When you call `typst` directly with the downloaded font, add `--font-path .deps/fonts`.
 
+Alternatively, `nix develop -c make` provides both without downloading into `.deps/`. This needs the [Nix package manager](https://nix.dev/install-nix), which runs on Linux, macOS and WSL (no NixOS required), with [flakes enabled](https://wiki.nixos.org/wiki/Flakes#Enabling_flakes_permanently).
+
 GitHub Actions builds the PDF on every push.
 
 ## Adapting it for your chair

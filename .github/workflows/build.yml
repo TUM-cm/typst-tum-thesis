@@ -14,19 +14,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - run: make
+      - uses: cachix/install-nix-action@v31
+      - run: nix build -L
       - uses: actions/upload-artifact@v7
         with:
           name: thesis
-          path: thesis.pdf
+          path: result/thesis.pdf
       # Repositories created from this template inherit this workflow. The
       # repository check keeps unfinished theses from being published there.
       - if: github.event_name == 'push' && github.repository == 'TUM-cm/typst-tum-thesis'
-        run: mkdir site && cp thesis.pdf site/
-      - if: github.event_name == 'push' && github.repository == 'TUM-cm/typst-tum-thesis'
         uses: actions/upload-pages-artifact@v5
         with:
-          path: site
+          path: result
 
   deploy:
     if: github.event_name == 'push' && github.repository == 'TUM-cm/typst-tum-thesis'
