@@ -18,7 +18,7 @@ jobs:
         with:
           typst-version: 0.15.1
       # PDF/UA-1 fails on missing alt text, so CI catches inaccessible figures early.
-      - run: typst compile --font-path fonts --pdf-standard ua-1 --input final=true thesis.typ thesis.pdf
+      - run: typst compile --font-path fonts --pdf-standard ua-1 --input show-todos=false thesis.typ thesis.pdf
       - uses: actions/upload-artifact@v7
         with:
           name: thesis
