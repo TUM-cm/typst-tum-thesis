@@ -5,6 +5,8 @@
 // abstracts, acknowledgements or appendix.
 
 #import "/lib/thesis.typ": thesis
+// To hide the todos, uncomment the following line
+// #show <todo>: none
 
 #show: thesis.with(
   title: [Title of Your Thesis],
