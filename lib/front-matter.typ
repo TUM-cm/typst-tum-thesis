@@ -1,5 +1,4 @@
-// Typst does not embed the sans font, so it comes from fonts/ via --font-path.
-// Without that flag the title pages fall back to serif.
+// The sans font is not embedded in Typst, so fall back to the serif one.
 #let sans = ("New Computer Modern Sans", "New Computer Modern")
 
 #let centered(size, weight: 400, body) = align(center, text(font: sans, size, weight: weight, body))
