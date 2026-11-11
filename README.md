@@ -45,17 +45,16 @@ Cite with `@key`, or `@key1 @key2` for several sources. The style is set with `c
 
 Set `lang: "de"` for a German thesis. This also switches the declaration and labels like "Contents" to German. `title-secondary` is the title in the other language.
 
-## Two-sided printing
-
-`two-sided: true` starts front matter and chapters on odd pages for double-sided printing. To get it for a single build, pass `--input two-sided=true` instead.
-
-## TODO hints
-
-`#todo[...]` boxes are shown by default. To hide them:
+## Inputs
 
 ```sh
-typst compile --font-path fonts --input final=true thesis.typ
+typst compile --font-path fonts [--input <name>=<value>]... thesis.typ
 ```
+
+| Input | Default | Effect |
+| --- | --- | --- |
+| `show-todos` | `true` | `false` hides the `#todo[...]` boxes |
+| `two-sided` | `false` | `true` starts front matter and chapters on odd pages for double-sided printing |
 
 ## PDF/UA export
 
